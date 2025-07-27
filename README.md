@@ -1,4 +1,4 @@
-# Web-Development-Task
+# Web Development Task - Leaf & Lush
 Leaf & Lush will be an online store focused on selling homegrown vegetables and sharing fresh, garden-to-table recipes. The platform will connect local growers to customers and inspire healthy cooking.
 ## Functional & Non-Functional Requirements
 Functional Requirements
