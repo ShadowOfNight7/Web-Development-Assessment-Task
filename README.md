@@ -25,9 +25,9 @@ Due to time constraints the scope of the project will be limited three simple bu
 | Typography | I chose a combination of the fonts Newsreader and Inter. They are both clear and professional fonts perfect for my goal of trying to create a casual professional website. |
 | Images | The images I chose for the recipes and products are all eye-catching, straight to the point, and appealing. These images will allow the user to see recipes and products before they make or buy them. |
 ### Images Of Wireframe
-![](Assets\UIDesignWireFrame1.png)
-![](Assets\UIDesignWireFrame2.png)
-![](Assets\UIDesignWireFrame3.png)
+![](Assets/UIDesignWireFrame1.png)
+![](Assets/UIDesignWireFrame2.png)
+![](Assets/UIDesignWireFrame3.png)
 ## Alternate Wireframe Design
 | Choices | Description |
 | ----------- | ----------- |
@@ -37,7 +37,7 @@ Due to time constraints the scope of the project will be limited three simple bu
 ### Feedback Incorporated
 Following my client's feedback I reduced the amount of text on the pages by making the descriptions shorter and the instructions more concise. The recipes also have more images to break up the text more. Additionally, I resized the product displays, which were previously unnecessarily large. Furthermore, I reduced the scrolling required on all pages, as per the client's request, especially on the homepage and increased image sizes for better user engagement. 
 ### Images Of Wireframe
-![](Assets\UIAlternateDesignWireFrame1.png)
-![](Assets\UIAlternateDesignWireFrame2.png)
-![](Assets\UIAlternateDesignWireFrame3.png)
-![](Assets\UIAlternateDesignWireFrame4.png)
+![](Assets/UIAlternateDesignWireFrame1.png)
+![](Assets/UIAlternateDesignWireFrame2.png)
+![](Assets/UIAlternateDesignWireFrame3.png)
+![](Assets/UIAlternateDesignWireFrame4.png)
