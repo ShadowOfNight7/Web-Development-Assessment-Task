@@ -28,6 +28,7 @@ Due to time constraints the scope of the project will be limited three simple bu
 ![](Assets/UIDesignWireframe1.png)
 ![](Assets/UIDesignWireframe2.png)
 ![](Assets/UIDesignWireframe3.png)
+You can view the wireframe in better detail [here](https://www.figma.com/design/GM4gpWhBxVio2TyjBGHUlF/Leaf---Lush---2025-Computer-Technology-Assessment-3---Yi-Ping?node-id=1669-162202&t=JQH6FRsWkqxtmnar-1).
 ## Alternate Wireframe Design
 | Choices | Description |
 | ----------- | ----------- |
@@ -36,8 +37,9 @@ Due to time constraints the scope of the project will be limited three simple bu
 | Images | The images I chose for the recipes and products are all eye-catching, straight to the point, and appealing. These images will allow the user to see recipes and products before they make or buy them. I also increased the amount of images to make the website more visually appealing. |
 ### Feedback Incorporated
 Following my client's feedback I reduced the amount of text on the pages by making the descriptions shorter and the instructions more concise. The recipes also have more images to break up the text more. Additionally, I resized the product displays, which were previously unnecessarily large. Furthermore, I reduced the scrolling required on all pages, as per the client's request, especially on the homepage and increased image sizes for better user engagement. 
-### Images Of Wireframe
+### Images Of Alternate Wireframe
 ![](Assets/UIAlternateDesignWireframe1.png)
 ![](Assets/UIAlternateDesignWireframe2.png)
 ![](Assets/UIAlternateDesignWireframe3.png)
 ![](Assets/UIAlternateDesignWireframe4.png)
+You can view the wireframe in better detail [here](https://www.figma.com/design/GM4gpWhBxVio2TyjBGHUlF/Leaf---Lush---2025-Computer-Technology-Assessment-3---Yi-Ping?node-id=1669-162202&t=JQH6FRsWkqxtmnar-1).
