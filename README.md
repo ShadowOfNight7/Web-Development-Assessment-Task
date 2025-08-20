@@ -6,7 +6,7 @@ Leaf & Lush will be an online store focused on selling homegrown vegetables and 
 - Users can add items to their cart.
 - Users can use a checkout to pay for the goods.
 - Recipes link to ingredients available in-store.
-- Users can log in as well as add and remove credit card information.
+- Users can login as well as add and remove credit card information.
 - Users can add listings and sell produce.
 - Database and front-end must be able to communcate.
 ### Non-Functional Requirements
@@ -43,3 +43,39 @@ Following my client's feedback I reduced the amount of text on the pages by maki
 ![](Assets/UIAlternateDesignWireframe3.png)
 ![](Assets/UIAlternateDesignWireframe4.png)
 You can view the wireframe in better detail [here](https://www.figma.com/design/GM4gpWhBxVio2TyjBGHUlF/Leaf---Lush---2025-Computer-Technology-Assessment-3---Yi-Ping?node-id=1669-162202&t=JQH6FRsWkqxtmnar-1).
+## Flowchart
+Flowchart of the login page and the account creation. 
+![](Assets/LogInPageFlowchart.png)
+### Test Case 1
+**Test Case ID:** 001
+
+**Test Case Name:** Logging In
+
+**Prediction:** User will sucessfully login, see their account info, and log out.
+### Steps
+1. Code checks if database is accessable. Code will reload until the database is accessable.
+2. Prompt the user to enter login details.
+3. User will enter details.
+4. The code will check if the details match the database.
+5. The details will be correct and the code will pull the user's data from the database.
+6. The code will display the information.
+7. The user will log out and the code will end.
+
+### Test Case 2
+**Test Case ID:** 002
+
+**Test Case Name:** Failing To Login And Creating Account
+
+**Prediction:** User will fail to log in, create an account, and there will be a new account in the database.
+### Steps
+1. Code checks if database is accessable. Code will reload until the database is accessable.
+2. Prompt the user to enter login details.
+3. User will enter details.
+4. The code will check if the details match the database.
+5. The details will be incorrect and the code will prompt the user to try again or create an account.
+6. Code will prompt user to enter details for a new account. 
+7. The code will check if the username is taken. If it is then the code will prompt the user to try again.
+8. If all the info are valid then the new account will be created.
+9. The code will then pull the account info from the database.
+10. The code will display the information.
+11. The user will log out and the code will end.
