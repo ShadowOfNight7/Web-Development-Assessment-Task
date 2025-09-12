@@ -1,0 +1,143 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+{% endblock content %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>Produce</title>
+    <style>
+        .produce-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .produce-section.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .produce-text {
+            flex: 1;
+            font-size: 1.2rem;
+        }
+
+        .produce-image {
+            flex: 1;
+        }
+
+        .produce-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .carousel-container {
+            perspective: 1000px;
+            width: 300px;
+            height: 300px;
+            margin: 3rem auto;
+            position: relative;
+        }
+
+        .carousel {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-style: preserve-3d;
+            transition: transform 1s;
+        }
+
+        .square {
+            position: absolute;
+            width: 200px;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card {
+            width: 100%;
+            height: 100%;
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+        }
+
+        .card-image {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .arrow.left {
+            left: -60px;
+        }
+
+        .arrow.right {
+            right: -60px;
+        }
+    </style>
+</head>
+<div class="carousel-container">
+    <div class="carousel" id="carousel">
+        {% for item in [
+        {'img':'starfruit.jpg','name':'Star Fruit','desc':'Quick description for item 1.'},
+        {'img':'greenApple.jpg','name':'Green Apples','desc':'Quick description for item 2.'},
+        {'img':'lemons.jpeg','name':'Lemons','desc':'Quick description for item 3.'},
+        {'img':'lettuce.avif','name':'Lettuce','desc':'Quick description for item 4.'},
+        {'img':'tomatoes.jpeg','name':'Tomatoes','desc':'Quick description for item 5.'}
+        ] %}
+        <div class="square">
+            <div class="card">
+                <img class="card-image" src="{{ url_for('static', filename='assets/' ~ item.img) }}"
+                    alt="{{ item.name }}">
+                <h1 class="card-name">{{ item.name }}</h1>
+                <p class="card-about">{{ item.desc }}</p>
+                <a class="card-link" href="#"><button class="btn">Read More</button></a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <button class="arrow left" id="prev">&#8592;</button>
+    <button class="arrow right" id="next">&#8594;</button>
+</div>
+
+<script>
+    const carousel = document.getElementById('carousel');
+    const squares = carousel.querySelectorAll('.square');
+    const total = squares.length;
+    let angle = 0;
+    const step = 360 / total;
+    const radius = 350;
+    squares.forEach((square, i) => {
+        square.style.transform = `rotateY(${i * step}deg) translateZ(${radius}px)`;
+    });
+    document.getElementById('next').addEventListener('click', () => {
+        angle -= step;
+        carousel.style.transform = `rotateY(${angle}deg)`;
+    });
+    document.getElementById('prev').addEventListener('click', () => {
+        angle += step;
+        carousel.style.transform = `rotateY(${angle}deg)`;
+    });
+</script>

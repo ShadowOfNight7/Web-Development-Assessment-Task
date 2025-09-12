@@ -1,0 +1,138 @@
+-- database: leaf&LushDatabase.db
+DROP TABLE allData;
+
+DROP TABLE userData;
+
+CREATE TABLE
+    allData (
+        extID INTEGER NOT NULL PRIMARY KEY,
+        name TEXT NOT NULL,
+        hyperlink TEXT NOT NULL,
+        about TEXT NOT NULL,
+        image TEXT NOT NULL
+    );
+
+CREATE TABLE
+    userData (
+        username TEXT NOT NULL PRIMARY KEY,
+        password TEXT NOT NULL
+    );
+
+INSERT INTO
+    userData (username, password)
+VALUES
+    ("123", "password");
+
+--"https://ritwickdey.gallerycdn.vsassets.io/allDatas/ritwickdey/liveserver/5.7.9/1661914858952/Microsoft.VisualStudio.Services.Icons.Default",
+INSERT INTO
+    allData (extID, name, hyperlink, about, image)
+VALUES
+    (
+        1,
+        "Caesar Salad",
+        "/recipes.html",
+        "Tasty and healthy!",
+        "caesarSalad.jpg"
+    );
+
+--"https://medo64.gallerycdn.vsassets.io/allDatas/medo64/render-crlf/1.7.1/1689315206970/Microsoft.VisualStudio.Services.Icons.Default",
+INSERT INTO
+    allData (extID, name, hyperlink, about, image)
+VALUES
+    (
+        2,
+        "Salad",
+        "/recipes.html",
+        "Very healthy and tastes like green!",
+        "salad.jpg"
+    );
+
+--"https://mccarter.gallerycdn.vsassets.io/allDatas/mccarter/start-git-bash/1.2.1/1499505567572/Microsoft.VisualStudio.Services.Icons.Default",
+INSERT INTO
+    allData (extID, name, hyperlink, about, image)
+VALUES
+    (
+        3,
+        "Pizza",
+        "/recipes.html",
+        "Very yummy...maybe not the healthiest though...",
+        "pizza.jpg"
+    );
+
+INSERT INTO
+    allData (extID, name, hyperlink, about, image)
+VALUES
+    (
+        4,
+        "LanZhou Beef Noodles",
+        "/recipes.html",
+        "Delicious 10/10 would recommend",
+        "lanZhouBeefNoodles.jpg"
+    );
+
+INSERT INTO
+    allData (extID, name, hyperlink, about, image)
+VALUES
+    (
+        5,
+        "Veggie Stir Fry",
+        "/recipes.html",
+        "Literally just cooked salad",
+        "vegStirFry.jpg"
+    );
+
+--"https://yy0931.gallerycdn.vsassets.io/allDatas/yy0931/vscode-sqlite3-editor/1.0.85/1690893830873/Microsoft.VisualStudio.Services.Icons.Default",
+INSERT INTO
+    allData (extID, name, hyperlink, about, image)
+VALUES
+    (
+        6,
+        "Tomato",
+        "/produce.html",
+        "Don't bite into them too hard.",
+        "tomatoes.jpeg"
+    );
+
+INSERT INTO
+    allData (extID, name, hyperlink, about, image)
+VALUES
+    (
+        7,
+        "Lettuce",
+        "/produce.html",
+        "Looks very green...a bit too green?",
+        "lettuce.avif"
+    );
+
+INSERT INTO
+    allData (extID, name, hyperlink, about, image)
+VALUES
+    (
+        8,
+        "Lemons",
+        "/produce.html",
+        "Mix with water and honey for a sweet treat!",
+        "lemons.jpeg"
+    );
+
+INSERT INTO
+    allData (extID, name, hyperlink, about, image)
+VALUES
+    (
+        9,
+        "Starfruit",
+        "/produce.html",
+        "Why does it acutally look like a star!",
+        "starfruit.jpg"
+    );
+
+INSERT INTO
+    allData (extID, name, hyperlink, about, image)
+VALUES
+    (
+        10,
+        "Green Apple",
+        "/produce.html",
+        "Apple...but GREEN!",
+        "greenApple.jpg"
+    );

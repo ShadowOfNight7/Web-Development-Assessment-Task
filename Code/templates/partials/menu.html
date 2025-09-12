@@ -1,0 +1,20 @@
+<head>
+    <link rel="stylesheet" href="/Code/static/css/style.css">
+</head>
+
+<body>
+    <nav>
+        <img src="{{ url_for('static', filename='assets/Leaf&Lush.png') }}" alt="Leaf & Lush Logo">
+        <h1>Leaf & Lush's Offical Website</h1>
+        <ul class="topnav">
+            <li>
+                <a href="{{ url_for('index') }}">Home</a>
+            </li>
+            <li><a href="{{ url_for('recipes') }}">Recipes</a></li>
+            <li><a href="{{ url_for('produce') }}">Produce</a></li>
+            <li><a href="{{ url_for('signin') }}">Sign In</a></li>
+            <li> | </li>
+            <li><b><a href="{{ url_for('signup') }}">Sign Up</a></b></li>
+        </ul>
+    </nav>
+</body>

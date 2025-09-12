@@ -1,0 +1,71 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>Produce</title>
+    <style>
+        .produce-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .produce-section.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .produce-text {
+            flex: 1;
+            font-size: 1.2rem;
+        }
+
+        .produce-image {
+            flex: 1;
+        }
+
+        .produce-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Produce</h1>
+
+    <div class="produce-section">
+        <div class="produce-text">
+            <h2>Fresh Vegetables</h2>
+            <p>
+                Our farm grows a variety of fresh, organic vegetables that are harvested daily.
+                From crisp lettuce and juicy tomatoes to crunchy carrots and cucumbers,
+                everything is grown with care to bring the best to your table.
+            </p>
+        </div>
+        <div class="produce-image">
+            <img src="{{ url_for('static', filename='assets/vegetables.jpg') }}" alt="Fresh Vegetables">
+        </div>
+    </div>
+
+    <div class="produce-section reverse">
+        <div class="produce-text">
+            <h2>Seasonal Fruits</h2>
+            <p>
+                We also offer a wide selection of seasonal fruits including strawberries,
+                apples, and melons. Each fruit is picked at peak ripeness to ensure
+                the sweetest flavors and highest quality.
+            </p>
+        </div>
+        <div class="produce-image">
+            <img src="{{ url_for('static', filename='assets/fruits.png') }}" alt="Fresh Fruits">
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+{% endblock %}

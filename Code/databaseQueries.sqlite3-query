@@ -1,0 +1,245 @@
+-- database: database.db
+DROP TABLE userData;
+
+DROP TABLE orderData;
+
+CREATE TABLE
+    userData (
+        userID INTEGER NOT NULL PRIMARY KEY,
+        email TEXT NOT NULL,
+        password TEXT NOT NULL,
+        age INTEGER NOT NULL,
+        friendIDs TEXT NOT NULL,
+        language TEXT NOT NULL
+    );
+
+CREATE TABLE
+    orderData (
+        orderID INTEGER NOT NULL PRIMARY KEY,
+        userID INTEGER NOT NULL,
+        itemID INTEGER NOT NULL,
+        amount INTEGER NOT NULL,
+        shippingLocation TEXT NOT NULL
+    );
+
+INSERT INTO
+    userData (userID, email, password, age, friendIDs, language)
+VALUES
+    (
+        1,
+        "email@email.com",
+        "password",
+        20,
+        "2,3",
+        "Python"
+    );
+
+INSERT INTO
+    userData (userID, email, password, age, friendIDs, language)
+VALUES
+    (
+        11,
+        "email@email.com",
+        "password",
+        20,
+        "2,3",
+        "Python"
+    );
+
+INSERT INTO
+    userData (userID, email, password, age, friendIDs, language)
+VALUES
+    (
+        10,
+        "email@email.com",
+        "password",
+        20,
+        "2,3",
+        "Python"
+    );
+
+INSERT INTO
+    userData (userID, email, password, age, friendIDs, language)
+VALUES
+    (
+        9,
+        "email@email.com",
+        "password",
+        20,
+        "2,3",
+        "Python"
+    );
+
+INSERT INTO
+    userData (userID, email, password, age, friendIDs, language)
+VALUES
+    (
+        8,
+        "email@email.com",
+        "password",
+        20,
+        "2,3",
+        "Python"
+    );
+
+INSERT INTO
+    userData (userID, email, password, age, friendIDs, language)
+VALUES
+    (
+        6,
+        "email@email.com",
+        "password",
+        20,
+        "2,3",
+        "Python"
+    );
+
+INSERT INTO
+    userData (userID, email, password, age, friendIDs, language)
+VALUES
+    (
+        7,
+        "email@email.com",
+        "password",
+        20,
+        "2,3",
+        "Python"
+    );
+
+INSERT INTO
+    userData (userID, email, password, age, friendIDs, language)
+VALUES
+    (
+        2,
+        "example@email.com",
+        "password123",
+        22,
+        "1",
+        "Scratch"
+    );
+
+INSERT INTO
+    userData (userID, email, password, age, friendIDs, language)
+VALUES
+    (
+        3,
+        "example@example.com",
+        "notapassword",
+        22,
+        "1",
+        "Python"
+    );
+
+INSERT INTO
+    userData (userID, email, password, age, friendIDs, language)
+VALUES
+    (
+        4,
+        "email@example.com",
+        "plschooseadiffrentpassword",
+        22,
+        "5",
+        "C##"
+    );
+
+INSERT INTO
+    userData (userID, email, password, age, friendIDs, language)
+VALUES
+    (
+        5,
+        "hello@email.com",
+        "verysecurepassword123",
+        1,
+        "4",
+        "JavaScript"
+    );
+
+INSERT INTO
+    orderData (orderID, userID, itemID, amount, shippingLocation)
+VALUES
+    (1, 1, 1, 1, "California");
+
+INSERT INTO
+    orderData (orderID, userID, itemID, amount, shippingLocation)
+VALUES
+    (2, 4, 1, 10, "The Fort");
+
+INSERT INTO
+    orderData (orderID, userID, itemID, amount, shippingLocation)
+VALUES
+    (
+        3,
+        3,
+        57,
+        9098765689876543,
+        "15th Warehouse Street"
+    );
+
+INSERT INTO
+    orderData (orderID, userID, itemID, amount, shippingLocation)
+VALUES
+    (4, 2, 93, 1, "Under The Bridge");
+
+INSERT INTO
+    orderData (orderID, userID, itemID, amount, shippingLocation)
+VALUES
+    (5, 1, 6, 3, "Example House");
+
+SELECT
+    *
+FROM
+    userData;
+
+SELECT
+    userID,
+    friendIDs
+FROM
+    userData;
+
+SELECT
+    *
+FROM
+    userData
+WHERE
+    NOT language = "C##";
+
+SELECT
+    *
+FROM
+    userData
+WHERE
+    userID = (
+        SELECT
+            friendIDs
+        FROM
+            userData
+        WHERE
+            userID = 4
+    );
+
+SELECT
+    *
+FROM
+    orderData;
+
+SELECT
+    *
+FROM
+    orderData
+WHERE
+    amount > 10;
+
+SELECT
+    email,
+    age
+FROM
+    userData
+WHERE
+    userID = (
+        SELECT
+            userID
+        FROM
+            orderData
+        WHERE
+            itemID = 1
+    )
