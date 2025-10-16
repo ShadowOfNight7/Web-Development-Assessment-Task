@@ -1,190 +1,187 @@
 @import url("https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 h1 {
-    text-align: center;
-    color: #228B22
+  text-align: center;
+  color: #228b22;
 }
 
 body {
-    background: #fdfdfd;
-    font-family: "Nunito", sans-serif;
-    font-size: 1rem;
-
+  background: #fdfdfd;
+  font-family: "Nunito", sans-serif;
+  font-size: 1rem;
 }
 
 main {
-    max-width: 900px;
-    margin: auto;
-    padding: 0.5rem;
-    text-align: center;
+  max-width: 900px;
+  margin: auto;
+  padding: 0.5rem;
+  text-align: center;
 }
 
 nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #d1ffbd;
-
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #d1ffbd;
 }
 
 nav img {
-    height: 100px;
-
+  height: 100px;
 }
 
 nav ul {
-    list-style: none;
-    display: flex;
+  list-style: none;
+  display: flex;
 }
 
 nav li {
-    margin-right: 1rem;
+  margin-right: 1rem;
 }
 
 nav ul li a {
-    text-decoration-line: none;
-    text-transform: uppercase;
-    color: #393b45;
+  text-decoration-line: none;
+  text-transform: uppercase;
+  color: #393b45;
 }
 
 nav ul li a:hover {
-    color: #14e6dd;
+  color: #00704a;
 }
 
 nav h1 {
-    color: #106d69;
-    margin-bottom: 0.5rem;
+  color: #106d69;
+  margin-bottom: 0.5rem;
 }
 
 .container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-    grid-gap: 1rem;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    padding: 1rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  padding: 1rem 0;
 }
 
 .card {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    width: 17rem;
-    background: #fff;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-    border-radius: 10px;
-    margin: auto;
-    overflow: hidden;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 17rem;
+  background: #fff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 10px;
+  margin: auto;
+  overflow: hidden;
 }
 
 .card-image {
-    width: 100%;
-    height: 15rem;
-    object-fit: cover;
+  width: 100%;
+  height: 15rem;
+  object-fit: cover;
 }
 
 .card-name {
-    color: #222;
-    font-weight: 700;
-    text-transform: capitalize;
-    font-size: 1.1rem;
-    margin-top: 0.5rem;
+  color: #222;
+  font-weight: 700;
+  text-transform: capitalize;
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
 }
 
 .card-about {
-    text-overflow: ellipsis;
-    width: 15rem;
-    white-space: nowrap;
-    overflow: hidden;
-    margin-bottom: 1rem;
+  text-overflow: ellipsis;
+  width: 15rem;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-bottom: 1rem;
 }
 
 .btn {
-    border: none;
-    background: none;
-    border-radius: 5px;
-    box-shadow: 1px 1px 2px rgba(21, 21, 21, 0.1);
-    cursor: pointer;
-    font-size: 1.25rem;
-    margin: 0 1rem;
-    padding: 0.25rem 2rem;
-    transition: all 0.25s ease-in-out;
-    background: #81CA46;
-    color: hsl(0, 0%, 100%);
-    margin-bottom: 1rem;
+  border: none;
+  background: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 2px rgba(21, 21, 21, 0.1);
+  cursor: pointer;
+  font-size: 1.25rem;
+  margin: 0 1rem;
+  padding: 0.25rem 2rem;
+  transition: all 0.25s ease-in-out;
+  background: #81ca46;
+  color: hsl(0, 0%, 100%);
+  margin-bottom: 1rem;
 }
 
 .btn:focus,
 .btn:hover {
-    box-shadow: 1px 1px 2px rgba(21, 21, 21, 0.2);
-    background: hsl(111, 21%, 86%);
+  box-shadow: 1px 1px 2px rgba(21, 21, 21, 0.2);
+  background: hsl(111, 21%, 86%);
 }
 
 .about-container {
-    font-size: 1.25rem;
-    margin-top: 2rem;
-    text-align: justify;
-    text-justify: inter-word;
+  font-size: 1.25rem;
+  margin-top: 2rem;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .signin-container {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    background: #B1DE8C;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #b1de8c;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 .signin-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .signin-form input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
 }
 
 .btn:hover {
-    background-color: #228B22;
+  background-color: #228b22;
 }
 
 .signup-text {
-    margin-top: 10px;
-    color: 228B22;
+  margin-top: 10px;
+  color: 228B22;
 }
 
 .flash-messages {
-    margin: 15px 0;
-    padding: 0;
+  margin: 15px 0;
+  padding: 0;
 }
 
 .flash {
-    padding: 10px 15px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    font-weight: bold;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-weight: bold;
 }
 
 .flash.error {
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
 }
 
 .flash.success {
-    background-color: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
 }
