@@ -7,8 +7,7 @@
       <div class="produce-text">
         <h2>Welcome To L&L!</h2>
         <p>
-Welcome to Leaf and Lush! You are an old hand or just starting out in the gardening world, Leaf and Lush is your go-to site for everything plant. Come pay a visit to a vibrant community where you can share your gardening adventures, pick up new techniques, and swap advice with fellow gardeners. Our site is designed to help you grow, not just plants, but concepts about green living and the joys of a full garden.        </p>
-      </div>
+Welcome to Leaf & Lush! Whether you have a green thumb or just starting out in gardening, Leaf and Lush is your go-to site for everything plant. Come join a vibrant community where you can share your garden goods, learn new techniques, and swap advice with fellow gardeners. Our site is designed to help you grow, not just plants, but closer to nature.</div>
       <div class="produce-image">
         <img
           src="{{ url_for('static', filename='assets/skilletChicken.jpg') }}"
@@ -19,10 +18,9 @@ Welcome to Leaf and Lush! You are an old hand or just starting out in the garden
 
     <div class="produce-section reverse">
       <div class="produce-text">
-        <h2>Recipes Of Perfection</h2>
+        <h2>Join Us Today!</h2>
         <p>
-Get inspired with our recipes! From farm-to-table treats to nutritious, garden-fresh cuisine, we have a range of recipes that celebrate the loveliness of homegrown ingredients. Whether you want to cook your harvest in a clever way or just learn new ways to make the most of your plants, we've got everything you need. Sign up with the Leaf and Lush community today and make your gardening hobbies and culinary imagination come true!        </p>
-      </div>
+Get inspired with our recipes! From nutritious quick snacks grow by our very members, to garden-fresh cuisine, we have a range of recipes for any occasion. Whether you want to cook your harvest in a clever way or teach other of the skills you've gathered, we've got everything. Sign up with the Leaf and Lush community today and unlock your gardening skills!</div>
       <div class="produce-image">
         <img
           src="{{ url_for('static', filename='assets/homeGrownFoods.jpg') }}"
@@ -185,13 +183,14 @@ Get inspired with our recipes! From farm-to-table treats to nutritious, garden-f
         position: absolute;
         bottom: 15px;
         right: 15px;
-        background: rgba(0, 0, 0, 0.6);
+        background-color: #4caf50;
         color: white;
         padding: 0.5rem 1rem;
         border-radius: 6px;
         text-decoration: none;
         opacity: 0;
         transition: opacity 0.3s;
+        
       }
 
       .carousel button {
@@ -215,15 +214,16 @@ Get inspired with our recipes! From farm-to-table treats to nutritious, garden-f
         bottom: 15px;
         right: 15px;
         transform: none;
-        background: rgba(0, 0, 0, 0.6);
-        color: white;
+        background-color: #4caf50;        color: white;
         padding: 0.5rem 1rem;
         border-radius: 6px;
         text-decoration: none;
         transition: opacity 0.3s;
         opacity: 0;
       }
-
+      .carousel-slide:hover .nav-btn{
+        background-color: #3e8e41;
+      }
       .carousel .pause {
         position: absolute;
         top: 50%;
@@ -253,6 +253,7 @@ Get inspired with our recipes! From farm-to-table treats to nutritious, garden-f
         opacity: 0;
         transition: opacity 0.3s;
       }
+      
       .carousel-slide:hover .nav-btn,
       .carousel:hover button,
       .carousel-slide .nav-btn,

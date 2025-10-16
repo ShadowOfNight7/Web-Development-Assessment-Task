@@ -34,18 +34,18 @@ def allowed_file(filename):
 
 
 @app.context_processor
-def inject_user():
-    user_id = session.get("user_id")
-    return dict(userID=user_id)
+def injectUser():
+    userId = session.get("user_id")
+    return dict(userID=userId)
 
 
-def make_upload_folder(app, user_id=None):
+def makeUploadFolder(app, userID=None):
     base = os.path.join(app.root_path, "static", "uploads")
     os.makedirs(base, exist_ok=True)
-    if user_id:
-        user_dir = os.path.join(base, str(user_id))
-        os.makedirs(user_dir, exist_ok=True)
-        return user_dir
+    if userID:
+        userDir = os.path.join(base, str(userID))
+        os.makedirs(userDir, exist_ok=True)
+        return userDir
     return base
 
 
@@ -343,15 +343,15 @@ def account():
 
     for post in userPosts:
 
-        def count_votes(field):
+        def countVotes(field):
             return len(post[field].split("-")) if post[field] else 0
 
-        stats["upvotesReceived"] += count_votes("upVote")
-        stats["downvotesReceived"] += count_votes("downVote")
-        stats["loveReceived"] += count_votes("loveVote")
-        stats["funnyReceived"] += count_votes("funnyVote")
-        stats["ideaReceived"] += count_votes("ideaVote")
-        stats["starsReceived"] += count_votes("star")
+        stats["upvotesReceived"] += countVotes("upVote")
+        stats["downvotesReceived"] += countVotes("downVote")
+        stats["loveReceived"] += countVotes("loveVote")
+        stats["funnyReceived"] += countVotes("funnyVote")
+        stats["ideaReceived"] += countVotes("ideaVote")
+        stats["starsReceived"] += countVotes("star")
 
     for post in allPosts:
         for field, statKey in [
@@ -442,7 +442,7 @@ def posts():
             file = request.files.get("image_file")
             if file and allowed_file(file.filename):
                 origFilename = secure_filename(file.filename)
-                uploadDir = make_upload_folder(current_app, userID)
+                uploadDir = makeUploadFolder(current_app, userID)
                 uniqueName = f"{int(time.time())}_{uuid.uuid4().hex[:8]}_{origFilename}"
                 savePath = os.path.join(uploadDir, uniqueName)
                 file.save(savePath)

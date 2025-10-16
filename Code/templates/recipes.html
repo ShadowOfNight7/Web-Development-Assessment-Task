@@ -5,10 +5,9 @@
   <div class="produce-text">
     <h2>Delicious Recipes</h2>
     <p>
-      Dive into a collection of delicious, quick, and flavorful recipes to
-      prepare. Whether you are a beginner in the kitchen or an experienced home
-      cook, our diverse collection of recipes is for every skill level and
-      taste. From savory main dishes to sweet treats, there's something for
+      Dive into a world of delicious, quick, and flavorful recipe. Whether you
+      are a beginner in the kitchen or an experienced home cook, our diverse
+      collection of recipes has something for everyone. There's something for
       every one of your appetites.
     </p>
   </div>
@@ -25,10 +24,8 @@
     <h2>Seasonal Specials</h2>
     <p>
       Our dishes are seasonally inspired, with the freshest of whatever is in
-      season. With farm-to-table, locally sourced ingredients, our intention is
-      to provide wholesome meals that take care of your body and soul. Discover
-      how fresh, uncomplicated ingredients can transform all aspects of your
-      cooking and set your dishes ablaze.
+      season. With ingredients grown by our members, our intention is to provide
+      wholesome meals that take care of not only your body but also soul.
     </p>
   </div>
   <div class="produce-image">
@@ -118,19 +115,6 @@ latestRecipes}, {'id': 'bestRatedCarousel', 'title': 'Best Rated Recipes',
     font-size: 1rem;
   }
 
-  .carousel-slide .nav-btn {
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
-    background: rgba(0, 0, 0, 0.6);
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    text-decoration: none;
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-
   .carousel button {
     opacity: 0;
     transition: opacity 0.3s;
@@ -152,13 +136,16 @@ latestRecipes}, {'id': 'bestRatedCarousel', 'title': 'Best Rated Recipes',
     bottom: 15px;
     right: 15px;
     transform: none;
-    background: rgba(0, 0, 0, 0.6);
+    background-color: #4caf50;
     color: white;
     padding: 0.5rem 1rem;
     border-radius: 6px;
     text-decoration: none;
     transition: opacity 0.3s;
     opacity: 0;
+  }
+  .carousel-slide:hover .nav-btn {
+    background-color: #3e8e41;
   }
 
   .carousel .pause {

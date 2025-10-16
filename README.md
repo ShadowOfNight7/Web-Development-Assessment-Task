@@ -335,7 +335,7 @@ Lighthouse report for account page:
 
 ## Running The Code
 
-**Running The Code**
+**Regular**
 
 1. Download and extract code.
 2. Run main.py (Python and libraries are required: Flask, Werkzeug, UUID, SQLite3. Run py -m pip install "library name" if you do not have any of the libraries).
