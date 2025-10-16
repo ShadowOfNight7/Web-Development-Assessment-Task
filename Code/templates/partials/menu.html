@@ -12,9 +12,14 @@
             </li>
             <li><a href="{{ url_for('recipes') }}">Recipes</a></li>
             <li><a href="{{ url_for('produce') }}">Produce</a></li>
-            <li><a href="{{ url_for('signin') }}">Sign In</a></li>
+            <li><a href="{{ url_for('latestposts') }}">Posts</a></li>
+            <li><a href="{{ url_for('posts') }}">Forums</a></li>
             <li> | </li>
+            {% if userID %}
+            <li><b><a href="{{ url_for('account') }}">Account</a></b></li>
+        {% else %}
+            <li><a href="{{ url_for('signin') }}">Sign In</a></li>
             <li><b><a href="{{ url_for('signup') }}">Sign Up</a></b></li>
-        </ul>
+        {% endif %}
     </nav>
 </body>

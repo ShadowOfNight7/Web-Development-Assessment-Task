@@ -1,17 +1,16 @@
 {% extends 'layout.html' %} {% block content %}
-<br />
-<h1>
-  Leaf & Lush Home
-</h1>
+<h1>Posts
+  </h1>
     <div class="produce-section">
       <div class="produce-text">
-        <h2>Welcome To L&L!</h2>
+        <h2>Join the Gardening Community</h2>
         <p>
-Welcome to Leaf and Lush! You are an old hand or just starting out in the gardening world, Leaf and Lush is your go-to site for everything plant. Come pay a visit to a vibrant community where you can share your gardening adventures, pick up new techniques, and swap advice with fellow gardeners. Our site is designed to help you grow, not just plants, but concepts about green living and the joys of a full garden.        </p>
+Our forums are the perfect community to connect with other gardeners. From seeking advice, swapping tips, or simply discussing your new gardening endeavors, you'll find a welcoming community that can help. Join in and build your gardening knowledge along with others.
+        </p>
       </div>
       <div class="produce-image">
         <img
-          src="{{ url_for('static', filename='assets/skilletChicken.jpg') }}"
+          src="{{ url_for('static', filename='assets/gardeners2.jpg') }}"
           alt="Fresh Vegetables"
         />
       </div>
@@ -19,53 +18,21 @@ Welcome to Leaf and Lush! You are an old hand or just starting out in the garden
 
     <div class="produce-section reverse">
       <div class="produce-text">
-        <h2>Recipes Of Perfection</h2>
+        <h2>Learn and Share</h2>
         <p>
-Get inspired with our recipes! From farm-to-table treats to nutritious, garden-fresh cuisine, we have a range of recipes that celebrate the loveliness of homegrown ingredients. Whether you want to cook your harvest in a clever way or just learn new ways to make the most of your plants, we've got everything you need. Sign up with the Leaf and Lush community today and make your gardening hobbies and culinary imagination come true!        </p>
+The forums are the perfect place to learn from each other and exchange ideas. Whether you're trying to fix a plant problem or discover new gardening tools, you'll find an abundance of information provided by eager gardeners. Let's grow knowledge and help one another!        </p>
       </div>
       <div class="produce-image">
         <img
-          src="{{ url_for('static', filename='assets/homeGrownFoods.jpg') }}"
+          src="{{ url_for('static', filename='assets/gardeners1.jpg') }}"
           alt="Fresh Fruits"
         />
       </div>
     </div>
 
-    {% set sliders = [ {'id': 'latestCarousel', 'title': 'Latest Activity',
+    {% set sliders = [ {'id': 'latestCarousel', 'title': 'Latest Forums Activity',
     'data': latestRecipes}, {'id': 'bestRatedCarousel', 'title': 'Best Rated
-    Produce', 'data': bestRated}] %} {% for slider in sliders %}
-    <div class="carousel-container">
-      <h2>{{ slider.title }}</h2>
-      <div class="carousel" id="{{ slider.id }}">
-        <div class="carousel-images">
-          {% for recipe in slider.data %}
-          <div class="carousel-slide">
-            <a href="{{ url_for('posts', postID=recipe.postID) }}">
-              {% if recipe.image and recipe.image != 'None' %}
-              <img src="{{ recipe.image }}" class="detail-image" />
-              {% else %}
-              <img
-                src="/static/uploads/123/imageError.png"
-                class="detail-image"
-              />
-              {% endif %}
-            </a>
-            <div class="slide-title">{{ recipe.title }}</div>
-            <a
-              href="{{ url_for('posts', postID=recipe.postID) }}"
-              class="nav-btn"
-            >
-              Click To View More
-            </a>
-          </div>
-          {% endfor %}
-        </div>
-        <button class="prev">&#10094;</button>
-        <button class="next">&#10095;</button>
-        <div class="dots"></div>
-      </div>
-    </div>
-    {% endfor %} {% set sliders = [ {'id': 'mostLovedCarousel', 'title': 'Most
+    Posts', 'data': bestRated}, {'id': 'mostLovedCarousel', 'title': 'Most
     Starred Posts', 'data': mostLoved} ] %} {% for slider in sliders %}
     <div class="carousel-container">
       <h2>{{ slider.title }}</h2>
@@ -108,9 +75,7 @@ Get inspired with our recipes! From farm-to-table treats to nutritious, garden-f
 
         for (let i = 0; i < slides.length; i++) {
           const dot = document.createElement("span");
-          dot.addEventListener("click", () => {
-            showSlide(i);
-          });
+          dot.addEventListener("click", () => showSlide(i));
           dotsContainer.appendChild(dot);
         }
         const dots = dotsContainer.querySelectorAll("span");
@@ -162,74 +127,55 @@ Get inspired with our recipes! From farm-to-table treats to nutritious, garden-f
         align-items: center;
         justify-content: center;
       }
-      .carousel-slide .slide-title {
-        position: absolute;
-        bottom: 15px;
-        left: 15px;
-        color: white;
-        background: rgba(0, 0, 0, 0.6);
-        padding: 0.5rem 1rem;
-        border-radius: 6px;
-        font-size: 1rem;
-      }
+
       .text-box {
         width: 90%;
+        max-width: 550px; 
         height: 100%;
+        max-height: 250px; 
         background: #b5e6a2;
         border-radius: 8px;
         padding: 1.5rem;
         box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
         position: relative;
+        overflow-y: auto; 
       }
-      .carousel-slide .nav-btn {
+      .recipe-title {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #222;
+        word-wrap: break-word; 
+      }
+
+.recipe-preview {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 2rem;
+  word-wrap: break-word; 
+}
+
+      .nav-btn {
         position: absolute;
         bottom: 15px;
         right: 15px;
-        background: rgba(0, 0, 0, 0.6);
+        background: #00704a;
         color: white;
-        padding: 0.5rem 1rem;
+        padding: 0.6rem 1rem;
         border-radius: 6px;
         text-decoration: none;
-        opacity: 0;
-        transition: opacity 0.3s;
+        transition: background 0.3s;
+      }
+
+      .nav-btn:hover {
+        background: #005c3b;
       }
 
       .carousel button {
-        opacity: 0;
-        transition: opacity 0.3s;
-        height: 50px;
-        transform: translateY(-50%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .carousel-slide {
-        position: relative;
-        flex-shrink: 0;
-        width: 100%;
-        height: 100%;
-      }
-
-      .carousel-slide .nav-btn {
-        position: absolute;
-        bottom: 15px;
-        right: 15px;
-        transform: none;
-        background: rgba(0, 0, 0, 0.6);
-        color: white;
-        padding: 0.5rem 1rem;
-        border-radius: 6px;
-        text-decoration: none;
-        transition: opacity 0.3s;
-        opacity: 0;
-      }
-
-      .carousel .pause {
         position: absolute;
         top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: rgba(0, 0, 0, 0.6);
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.5);
         border: none;
         color: white;
         font-size: 2rem;
@@ -238,9 +184,18 @@ Get inspired with our recipes! From farm-to-table treats to nutritious, garden-f
         border-radius: 6px;
         opacity: 0;
         transition: opacity 0.3s;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+      }
+
+      .carousel:hover button {
+        opacity: 1;
+      }
+
+      .carousel .prev {
+        left: 10px;
+      }
+
+      .carousel .next {
+        right: 10px;
       }
 
       .dots {
@@ -250,14 +205,6 @@ Get inspired with our recipes! From farm-to-table treats to nutritious, garden-f
         transform: translateX(-50%);
         display: flex;
         gap: 8px;
-        opacity: 0;
-        transition: opacity 0.3s;
-      }
-      .carousel-slide:hover .nav-btn,
-      .carousel:hover button,
-      .carousel-slide .nav-btn,
-      .carousel:hover .dots {
-        opacity: 1;
       }
 
       .dots span {

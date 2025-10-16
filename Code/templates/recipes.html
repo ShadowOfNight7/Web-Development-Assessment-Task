@@ -1,143 +1,290 @@
-{% extends 'layout.html' %}
-
-{% block content %}
-{% endblock content %}
-
-<head>
-    <meta charset="UTF-8">
-    <title>Produce</title>
-    <style>
-        .produce-section {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 2rem;
-            padding: 2rem;
-        }
-
-        .produce-section.reverse {
-            flex-direction: row-reverse;
-        }
-
-        .produce-text {
-            flex: 1;
-            font-size: 1.2rem;
-        }
-
-        .produce-image {
-            flex: 1;
-        }
-
-        .produce-image img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-
-        .carousel-container {
-            perspective: 1000px;
-            width: 300px;
-            height: 300px;
-            margin: 3rem auto;
-            position: relative;
-        }
-
-        .carousel {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            transform-style: preserve-3d;
-            transition: transform 1s;
-        }
-
-        .square {
-            position: absolute;
-            width: 200px;
-            height: 250px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .card {
-            width: 100%;
-            height: 100%;
-            background: white;
-            border-radius: 8px;
-            padding: 1rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            text-align: center;
-        }
-
-        .arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 2rem;
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem 1rem;
-        }
-
-        .card-image {
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-
-        .arrow.left {
-            left: -60px;
-        }
-
-        .arrow.right {
-            right: -60px;
-        }
-    </style>
-</head>
-<div class="carousel-container">
-    <div class="carousel" id="carousel">
-        {% for item in [
-        {'img':'starfruit.jpg','name':'Star Fruit','desc':'Quick description for item 1.'},
-        {'img':'greenApple.jpg','name':'Green Apples','desc':'Quick description for item 2.'},
-        {'img':'lemons.jpeg','name':'Lemons','desc':'Quick description for item 3.'},
-        {'img':'lettuce.avif','name':'Lettuce','desc':'Quick description for item 4.'},
-        {'img':'tomatoes.jpeg','name':'Tomatoes','desc':'Quick description for item 5.'}
-        ] %}
-        <div class="square">
-            <div class="card">
-                <img class="card-image" src="{{ url_for('static', filename='assets/' ~ item.img) }}"
-                    alt="{{ item.name }}">
-                <h1 class="card-name">{{ item.name }}</h1>
-                <p class="card-about">{{ item.desc }}</p>
-                <a class="card-link" href="#"><button class="btn">Read More</button></a>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-
-    <button class="arrow left" id="prev">&#8592;</button>
-    <button class="arrow right" id="next">&#8594;</button>
+{% extends 'layout.html' %} {% block content %}
+<br />
+<h1>Recipes</h1>
+<div class="produce-section">
+  <div class="produce-text">
+    <h2>Delicious Recipes</h2>
+    <p>
+      Dive into a collection of delicious, quick, and flavorful recipes to
+      prepare. Whether you are a beginner in the kitchen or an experienced home
+      cook, our diverse collection of recipes is for every skill level and
+      taste. From savory main dishes to sweet treats, there's something for
+      every one of your appetites.
+    </p>
+  </div>
+  <div class="produce-image">
+    <img
+      src="{{ url_for('static', filename='assets/recipe1.jpg') }}"
+      alt="Fresh Vegetables"
+    />
+  </div>
 </div>
 
+<div class="produce-section reverse">
+  <div class="produce-text">
+    <h2>Seasonal Specials</h2>
+    <p>
+      Our dishes are seasonally inspired, with the freshest of whatever is in
+      season. With farm-to-table, locally sourced ingredients, our intention is
+      to provide wholesome meals that take care of your body and soul. Discover
+      how fresh, uncomplicated ingredients can transform all aspects of your
+      cooking and set your dishes ablaze.
+    </p>
+  </div>
+  <div class="produce-image">
+    <img
+      src="{{ url_for('static', filename='assets/recipe2.webp') }}"
+      alt="Fresh Fruits"
+    />
+  </div>
+</div>
+
+{% set sliders = [ {'id': 'latestCarousel', 'title': 'Latest Recipes', 'data':
+latestRecipes}, {'id': 'bestRatedCarousel', 'title': 'Best Rated Recipes',
+'data': bestRated}, {'id': 'mostLovedCarousel', 'title': 'Most Starred Recipes',
+'data': mostLoved} ] %} {% for slider in sliders %}
+<div class="carousel-container">
+  <h2>{{ slider.title }}</h2>
+  <div class="carousel" id="{{ slider.id }}">
+    <div class="carousel-images">
+      {% for recipe in slider.data %}
+      <div class="carousel-slide">
+        <a href="{{ url_for('posts', postID=recipe.postID) }}">
+          {% if recipe.image and recipe.image != 'None' %}
+          <img src="{{ recipe.image }}" class="detail-image" />
+          {% else %}
+          <img src="/static/uploads/123/imageError.png" class="detail-image" />
+          {% endif %}
+        </a>
+        <div class="slide-title">{{ recipe.title }}</div>
+        <a href="{{ url_for('posts', postID=recipe.postID) }}" class="nav-btn">
+          Click To View More
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+    <button class="prev">&#10094;</button>
+    <button class="next">&#10095;</button>
+    <div class="dots"></div>
+  </div>
+</div>
+{% endfor %}
+
 <script>
-    const carousel = document.getElementById('carousel');
-    const squares = carousel.querySelectorAll('.square');
-    const total = squares.length;
-    let angle = 0;
-    const step = 360 / total;
-    const radius = 350;
-    squares.forEach((square, i) => {
-        square.style.transform = `rotateY(${i * step}deg) translateZ(${radius}px)`;
-    });
-    document.getElementById('next').addEventListener('click', () => {
-        angle -= step;
-        carousel.style.transform = `rotateY(${angle}deg)`;
-    });
-    document.getElementById('prev').addEventListener('click', () => {
-        angle += step;
-        carousel.style.transform = `rotateY(${angle}deg)`;
-    });
+  document.querySelectorAll(".carousel").forEach((carousel) => {
+    const imagesContainer = carousel.querySelector(".carousel-images");
+    const slides = imagesContainer.children;
+    const prevBtn = carousel.querySelector(".prev");
+    const nextBtn = carousel.querySelector(".next");
+    const dotsContainer = carousel.querySelector(".dots");
+    let index = 0;
+
+    for (let i = 0; i < slides.length; i++) {
+      const dot = document.createElement("span");
+      dot.addEventListener("click", () => {
+        showSlide(i);
+      });
+      dotsContainer.appendChild(dot);
+    }
+    const dots = dotsContainer.querySelectorAll("span");
+
+    function showSlide(i) {
+      index = (i + slides.length) % slides.length;
+      imagesContainer.style.transform = `translateX(${-index * 100}%)`;
+      dots.forEach((d) => d.classList.remove("active"));
+      if (dots[index]) dots[index].classList.add("active");
+    }
+
+    prevBtn.addEventListener("click", () => showSlide(index - 1));
+    nextBtn.addEventListener("click", () => showSlide(index + 1));
+
+    showSlide(0);
+  });
 </script>
+
+<style>
+  h2 {
+    text-align: center;
+    color: #228b22;
+  }
+  .carousel-slide .slide-title {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    color: white;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 1rem;
+  }
+
+  .carousel-slide .nav-btn {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    text-decoration: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .carousel button {
+    opacity: 0;
+    transition: opacity 0.3s;
+    height: 50px;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .carousel-slide {
+    position: relative;
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .carousel-slide .nav-btn {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    transform: none;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: opacity 0.3s;
+    opacity: 0;
+  }
+
+  .carousel .pause {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.6);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .dots {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .carousel-slide:hover .nav-btn,
+  .carousel:hover button,
+  .carousel-slide .nav-btn,
+  .carousel:hover .dots {
+    opacity: 1;
+  }
+
+  .dots span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .dots span.active {
+    background: #00704a;
+  }
+
+  .produce-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+  }
+
+  .produce-section.reverse {
+    flex-direction: row-reverse;
+  }
+
+  .produce-text {
+    flex: 1;
+    font-size: 1.2rem;
+  }
+
+  .produce-image {
+    flex: 1;
+  }
+
+  .produce-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  .carousel {
+    position: relative;
+    width: 600px;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    margin: 2rem auto;
+  }
+
+  .carousel-images {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .carousel-images img {
+    width: 600px;
+    height: 400px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .carousel button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+  }
+
+  .carousel button:hover {
+    background: rgba(0, 0, 0, 0.7);
+  }
+
+  .carousel .prev {
+    left: 10px;
+  }
+
+  .carousel .next {
+    right: 10px;
+  }
+</style>
+
+{% endblock %}

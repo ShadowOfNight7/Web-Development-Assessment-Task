@@ -1,0 +1,195 @@
+{% extends 'layout.html' %} {% block content %}
+
+<style>
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+  }
+
+  body {
+    background-image: url("{{ url_for('static', filename='assets/backdrop5.webp') }}");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: calc(100vh - 60px);
+    padding-top: 75px;
+  }
+
+  .account-wrapper {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 900px;
+  }
+
+  .account-container {
+    background-color: #d1ffbd;
+    padding: 30px;
+    border-radius: 12px;
+    width: 380px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+
+  .account-container h1 {
+    margin-top: 0;
+    color: #4caf50;
+  }
+
+  .account-info,
+  .account-stats {
+    background-color: #e8ffe1;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 20px;
+    text-align: left;
+  }
+
+  .account-info h2,
+  .account-stats h2 {
+    color: #388e3c;
+    margin-top: 0;
+  }
+
+  .account-info p,
+  .account-stats li {
+    padding: 6px 0;
+    border-bottom: 1px solid #b5e6a2;
+    margin: 0;
+  }
+
+  .account-stats ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .account-stats li:last-child,
+  .account-info p:last-child {
+    border-bottom: none;
+  }
+
+  .btn {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 15px;
+    transition: background-color 0.2s;
+  }
+
+  .btn:hover {
+    background-color: #3e8e41;
+  }
+
+  .flash-messages {
+    margin-bottom: 15px;
+  }
+
+  .flash {
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .flash.success {
+    background-color: #d4edda;
+    color: #155724;
+  }
+
+  .flash.error {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+</style>
+
+<main>
+  <div class="account-wrapper">
+    <div class="account-container">
+      <h1>Account Info</h1>
+
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %}
+      <div class="flash-messages">
+        {% for category, message in messages %}
+        <p class="flash {{ category }}">{{ message }}</p>
+        {% endfor %}
+      </div>
+      {% endif %} {% endwith %}
+
+      <div class="account-info">
+        <p><strong>Username:</strong> {{ userID }}</p>
+        <p><strong>Email:</strong> {{ userInfo.email }}</p>
+        <p><strong>Phone:</strong> {{ userInfo.phone or 'N/A' }}</p>
+        <p><strong>Date of Birth:</strong> {{ userInfo.dob or 'N/A' }}</p>
+        <p><strong>Joined:</strong> {{ userInfo.creationDate }}</p>
+      </div>
+
+      <form method="POST">
+        <input type="hidden" name="action" value="signout" />
+        <button type="submit" class="btn">Sign Out</button>
+      </form>
+    </div>
+
+    <div class="account-container">
+      <h1>User Stats</h1>
+      <div class="account-stats">
+        <ul>
+          <li><strong>Total Posts:</strong> {{ stats.totalPosts }}</li>
+          <li><strong>Replies Made:</strong> {{ stats.repliesMade }}</li>
+          <li>
+            <strong>Replies Received:</strong> {{ stats.repliesReceived }}
+          </li>
+
+          <li><strong>Posts You Liked:</strong> {{ stats.postsYouLiked }}</li>
+          <li>
+            <strong>Posts You Disliked:</strong> {{ stats.postsYouDisliked }}
+          </li>
+          <li>
+            <strong>Posts You Starred:</strong> {{ stats.postsYouStarred }}
+          </li>
+
+          <li>
+            <strong>Upvotes Received:</strong> {{ stats.upvotesReceived }}
+          </li>
+          <li>
+            <strong>Downvotes Received:</strong> {{ stats.downvotesReceived }}
+          </li>
+          <li><strong>Stars Received:</strong> {{ stats.starsReceived }}</li>
+
+          <li><strong>Dis/like Ratio:</strong> {{ stats.likeDislikeRatio }}</li>
+          <li>
+            <strong>Dis/like Received Ratio:</strong> {{
+            stats.likeDislikeReceivedRatio }}
+          </li>
+
+          <li><strong>Your Best Post:</strong> {{ stats.bestPost }}</li>
+          <li>
+            <strong>Your Best Post's D/L Ratio:</strong> {{ stats.bestPostRatio
+            }}
+          </li>
+
+          <li>
+            <strong>Your Favourite User:</strong> {{ stats.favouriteUser }}
+          </li>
+          <li><strong>Your Biggest Fan:</strong> {{ stats.biggestFan }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</main>
+
+{% endblock %}

@@ -3,6 +3,8 @@ DROP TABLE allData;
 
 DROP TABLE userData;
 
+DROP TABLE postData;
+
 CREATE TABLE
     allData (
         extID INTEGER NOT NULL PRIMARY KEY,
@@ -12,16 +14,131 @@ CREATE TABLE
         image TEXT NOT NULL
     );
 
+CREATE TABLE userData (
+    username TEXT NOT NULL PRIMARY KEY,
+    password TEXT NOT NULL,
+    email TEXT NOT NULL,
+    phone TEXT DEFAULT "",
+    dob TEXT DEFAULT "",
+    bio TEXT DEFAULT "",
+    creationDate TEXT DEFAULT CURRENT_TIMESTAMP
+);
+
 CREATE TABLE
-    userData (
-        username TEXT NOT NULL PRIMARY KEY,
-        password TEXT NOT NULL
+    postData (
+        postID INTEGER NOT NULL PRIMARY KEY,
+        username TEXT NOT NULL,
+        title TEXT NOT NULL,
+        content TEXT NOT NULL,
+        time TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        type TEXT NOT NULL DEFAULT "post",
+        reply TEXT DEFAULT "None",
+        image TEXT DEFAULT "None",
+        price INTEGER DEFAULT 0,
+        amount INTEGER DEFAULT 0,
+        upVote TEXT DEFAULT "",
+        downVote TEXT DEFAULT "",
+        loveVote TEXT DEFAULT "",
+        funnyVote TEXT DEFAULT "",
+        ideaVote TEXT DEFAULT "",
+        star TEXT DEFAULT ""
     );
 
 INSERT INTO
-    userData (username, password)
+    postData (postID, username, title, content,type,image)
 VALUES
-    ("123", "password");
+    (
+        1,
+        "123",
+        "Fruits of my labour!",
+        "I'm selling these tomato plants. Contant me at xxxx xxx xxx. I'm sell both the tomato plant and the fruit. Price is neogtiable!",
+        "produce",
+        "/static/uploads/123/tomatoPlants.jpg"
+     
+    );
+
+INSERT INTO
+    postData (postID, username, title, content, reply)
+VALUES
+    (
+        2,
+        "username123456",
+        "Reply to post 1",
+        "Have you tried watering it?",
+        "1"
+    );
+
+INSERT INTO
+    postData (postID, username, title, content,type)
+VALUES
+    (
+        3,
+        "username123456",
+        "How do I grow lettuce?",
+        "Help! Why does my lettuce plant not grow? Am I not adding enough water?",
+        "post"
+    );
+INSERT INTO
+    postData (postID, username, title, content,type,image)
+VALUES
+    (
+        4,
+        "123",
+        "Salad Recipe :D",
+        "Heres how you make my new amazing Caesat salad!",
+        "recipe",
+        "/static/uploads/123/caesarSalad.jpg"
+    );
+INSERT INTO
+    postData (postID, username, title, content,reply)
+VALUES
+    (
+        5,
+        "123",
+        "Reply to post 6",
+        "looks very nice :P",
+        "6"
+    );
+    INSERT INTO
+    postData (postID, username, title, content,type,image,upVote)
+VALUES
+    (
+        6,
+        "123",
+        "LanZhou Beef Noodles",
+        "How to make LanZhou Beef Noodels :D",
+        "recipe",
+        "/static/uploads/123/lanZhouBeefNoodles.jpg",
+        "123"
+    );
+    INSERT INTO
+    postData (postID, username, title, content,type,image,star)
+VALUES
+    (
+        7,
+        "123",
+        "SELLING ALL B4 WINTER",
+        "I WILL BE SELLING EVERYTHING AT A 20% DISCOUNT!!!1!",
+        "produce",
+        "/static/uploads/123/backdrop1.webp",
+           "123"
+    );
+    INSERT INTO
+    postData (postID, username, title, content,type,upVote)
+VALUES
+    (
+        8,
+        "username123456",
+        "What type of dirt is best?",
+        "I'm growing a monoculture in my garden. Any advice on what type of dirt I should buy? My budget is $350. Thx!",
+        "post",
+        "123"
+    );
+
+INSERT INTO
+    userData (username, password, email)
+VALUES
+    ("123", "password","example@email.com");
 
 --"https://ritwickdey.gallerycdn.vsassets.io/allDatas/ritwickdey/liveserver/5.7.9/1661914858952/Microsoft.VisualStudio.Services.Icons.Default",
 INSERT INTO
